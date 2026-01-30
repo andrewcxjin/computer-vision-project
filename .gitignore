@@ -5,6 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
+hit-uav/
 
 # Distribution / packaging
 .Python
