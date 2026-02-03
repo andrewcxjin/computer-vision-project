@@ -1,0 +1,17 @@
+# UAV Human Detection - Deployment Requirements
+# For Gradio/Hugging Face Spaces deployment
+
+# Deep Learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Web Interface
+gradio>=4.0.0
+
+# Image Processing
+opencv-python-headless>=4.8.0
+Pillow>=9.0.0
+numpy>=1.21.0
+
+# Note: For Hugging Face Spaces with GPU, use:
+# --extra-index-url https://download.pytorch.org/whl/cu118

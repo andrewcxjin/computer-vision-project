@@ -5,7 +5,27 @@ __pycache__/
 
 # C extensions
 *.so
+
+# =============================================================================
+# PROJECT SPECIFIC
+# =============================================================================
+
+# Dataset (too large for git)
 hit-uav/
+data/raw/
+
+# Model files (upload directly to HuggingFace Space)
+models/*.pth
+models/*.joblib
+*.pth
+*.joblib
+
+# Output files
+data/outputs/*.png
+data/outputs/*.json
+
+# OS files
+.DS_Store
 
 # Distribution / packaging
 .Python
