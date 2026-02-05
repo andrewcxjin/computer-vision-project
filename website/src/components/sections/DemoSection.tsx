@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Upload, Sliders, Eye, Zap, Github, ExternalLink } from 'lucide-react'
+import { Upload, Sliders, Eye, Zap, Maximize2, Minimize2 } from 'lucide-react'
 import { AnimatedText } from '../AnimatedText'
 
 const demoFeatures = [
@@ -28,9 +28,13 @@ const demoFeatures = [
   },
 ]
 
+// HuggingFace Space URL for the embedded demo
+const HUGGINGFACE_SPACE_URL = 'https://shreyamendi-uav-human-detection.hf.space'
+
 export function DemoSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
   return (
     <section
@@ -49,7 +53,7 @@ export function DemoSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-16 md:mb-24 text-center"
+          className="mb-12 md:mb-16 text-center"
         >
           <span className="chapter-number block mb-4">CHAPTER 05</span>
           <h2 className="section-title font-bold mb-4">
@@ -60,116 +64,80 @@ export function DemoSection() {
           </p>
         </motion.div>
 
-        {/* Demo Embed Area */}
+        {/* Embedded Gradio Demo */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto mb-16"
+          className={`mx-auto mb-12 transition-all duration-300 ${
+            isFullscreen
+              ? 'fixed inset-4 z-50 max-w-none'
+              : 'max-w-5xl'
+          }`}
         >
-          <div className="relative aspect-video rounded-xl overflow-hidden border border-electric-blue/30 bg-navy-dark/50">
-            {/* Demo Preview */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              {/* Animated Detection Preview */}
-              <div className="relative w-full h-full p-8">
-                {/* Grid Background */}
-                <div className="absolute inset-0 grid-bg opacity-30" />
-
-                {/* Simulated Interface */}
-                <div className="absolute inset-4 border border-electric-blue/20 rounded-lg">
-                  {/* Header Bar */}
-                  <div className="absolute top-0 left-0 right-0 h-10 bg-navy-dark/80 border-b border-electric-blue/20 flex items-center px-4">
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                      <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                    </div>
-                    <span className="ml-4 text-xs font-mono text-slate-text">
-                      UAV Detection Demo
-                    </span>
-                  </div>
-
-                  {/* Content Area */}
-                  <div className="absolute top-10 left-0 right-0 bottom-0 p-4">
-                    {/* Detection Boxes Animation */}
-                    <motion.div
-                      className="absolute top-1/4 left-1/4 w-20 h-28 border-2 border-electric-blue"
-                      animate={{
-                        opacity: [0, 1, 1, 0],
-                        scale: [0.8, 1, 1, 0.8],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatDelay: 1,
-                      }}
-                    >
-                      <span className="absolute -top-5 left-0 text-xs font-mono text-electric-blue bg-navy-dark px-1">
-                        Person
-                      </span>
-                    </motion.div>
-
-                    <motion.div
-                      className="absolute top-1/3 right-1/3 w-16 h-24 border-2 border-cyan-accent"
-                      animate={{
-                        opacity: [0, 0, 1, 1, 0],
-                        scale: [0.8, 0.8, 1, 1, 0.8],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatDelay: 1,
-                        delay: 0.5,
-                      }}
-                    >
-                      <span className="absolute -top-5 left-0 text-xs font-mono text-cyan-accent bg-navy-dark px-1">
-                        Person
-                      </span>
-                    </motion.div>
-                  </div>
+          <div className={`relative rounded-xl overflow-hidden border border-electric-blue/30 bg-navy-dark/50 ${
+            isFullscreen ? 'h-full' : ''
+          }`}>
+            {/* Header Bar */}
+            <div className="absolute top-0 left-0 right-0 h-10 bg-navy-dark/90 border-b border-electric-blue/20 flex items-center justify-between px-4 z-10">
+              <div className="flex items-center gap-4">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/50" />
                 </div>
-
-                {/* Scan Line */}
-                <motion.div
-                  className="absolute left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-electric-blue to-transparent"
-                  animate={{ top: ['10%', '90%', '10%'] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                />
+                <span className="text-xs font-mono text-slate-text">
+                  UAV Human Detection - Live Demo
+                </span>
               </div>
+              <button
+                onClick={() => setIsFullscreen(!isFullscreen)}
+                className="p-1 hover:bg-electric-blue/20 rounded transition-colors"
+                title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
+              >
+                {isFullscreen ? (
+                  <Minimize2 className="text-slate-text" size={16} />
+                ) : (
+                  <Maximize2 className="text-slate-text" size={16} />
+                )}
+              </button>
+            </div>
 
-              {/* Overlay with Instructions */}
-              <div className="absolute inset-0 flex items-center justify-center bg-deep-black/70">
-                <div className="text-center px-6">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-electric-blue/20 border-2 border-electric-blue flex items-center justify-center">
-                    <Github className="text-electric-blue" size={32} />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">
-                    Run the Demo Locally
-                  </h3>
-                  <p className="text-slate-text mb-6 max-w-md">
-                    Clone the repository and run the Gradio app to test the models with your own images.
-                  </p>
-                  <code className="block bg-navy-dark/80 text-cyan-accent px-4 py-3 rounded-lg text-sm font-mono mb-4">
-                    python main.py
-                  </code>
-                </div>
-              </div>
+            {/* Gradio Iframe */}
+            <div className={`pt-10 ${isFullscreen ? 'h-full' : ''}`}>
+              <iframe
+                src={HUGGINGFACE_SPACE_URL}
+                className={`w-full border-0 ${
+                  isFullscreen ? 'h-[calc(100%-40px)]' : 'h-[600px] md:h-[700px]'
+                }`}
+                title="UAV Human Detection Demo"
+                allow="accelerometer; camera; microphone; clipboard-write"
+                sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-downloads"
+              />
             </div>
 
             {/* Corner Decorations */}
-            <div className="absolute top-2 left-2 w-8 h-8 border-l-2 border-t-2 border-electric-blue/50" />
-            <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 border-electric-blue/50" />
-            <div className="absolute bottom-2 left-2 w-8 h-8 border-l-2 border-b-2 border-electric-blue/50" />
-            <div className="absolute bottom-2 right-2 w-8 h-8 border-r-2 border-b-2 border-electric-blue/50" />
+            <div className="absolute top-12 left-2 w-6 h-6 border-l-2 border-t-2 border-electric-blue/30 pointer-events-none" />
+            <div className="absolute top-12 right-2 w-6 h-6 border-r-2 border-t-2 border-electric-blue/30 pointer-events-none" />
+            <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-electric-blue/30 pointer-events-none" />
+            <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-electric-blue/30 pointer-events-none" />
           </div>
         </motion.div>
+
+        {/* Fullscreen Backdrop */}
+        {isFullscreen && (
+          <div
+            className="fixed inset-0 bg-deep-black/90 z-40"
+            onClick={() => setIsFullscreen(false)}
+          />
+        )}
 
         {/* Demo Features */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
         >
           {demoFeatures.map((feature, index) => {
             const Icon = feature.icon
@@ -191,43 +159,16 @@ export function DemoSection() {
           })}
         </motion.div>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a
-            href="https://github.com/shreyamendi/computer-vision-project"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary flex items-center gap-2"
-          >
-            <Github size={18} />
-            View on GitHub
-          </a>
-          <a
-            href="https://github.com/shreyamendi/computer-vision-project/blob/main/README.md"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary flex items-center gap-2"
-          >
-            Setup Instructions
-            <ExternalLink size={18} />
-          </a>
-        </motion.div>
-
         {/* Technical Note */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-12 text-center"
+          className="text-center"
         >
           <p className="text-sm text-slate-text max-w-xl mx-auto">
-            The Gradio demo supports single detection, model comparison, and robustness testing.
-            Models are included in the repository (~158MB each).
+            The demo runs on HuggingFace Spaces. First inference may take a moment to warm up.
+            Upload your own thermal images or use the provided examples.
           </p>
         </motion.div>
       </div>
