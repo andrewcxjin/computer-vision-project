@@ -1,0 +1,6 @@
+# Force Railway to use Dockerfile instead of auto-detection
+[phases.build]
+cmds = []
+
+[phases.setup]
+cmds = []
