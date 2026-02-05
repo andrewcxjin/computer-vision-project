@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Play, ExternalLink, Upload, Sliders, Eye, Zap } from 'lucide-react'
+import { Upload, Sliders, Eye, Zap, Github, ExternalLink } from 'lucide-react'
 import { AnimatedText } from '../AnimatedText'
 
 const demoFeatures = [
@@ -31,7 +31,6 @@ const demoFeatures = [
 export function DemoSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [isHovered, setIsHovered] = useState(false)
 
   return (
     <section
@@ -57,7 +56,7 @@ export function DemoSection() {
             <AnimatedText text="See It In Action" />
           </h2>
           <p className="text-xl md:text-2xl text-cyan-accent font-light max-w-2xl mx-auto">
-            Real-time human detection from aerial views
+            Try the detection models yourself
           </p>
         </motion.div>
 
@@ -68,11 +67,7 @@ export function DemoSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-4xl mx-auto mb-16"
         >
-          <div
-            className="relative aspect-video rounded-xl overflow-hidden border border-electric-blue/30 bg-navy-dark/50 group"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
+          <div className="relative aspect-video rounded-xl overflow-hidden border border-electric-blue/30 bg-navy-dark/50">
             {/* Demo Preview */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               {/* Animated Detection Preview */}
@@ -110,7 +105,7 @@ export function DemoSection() {
                       }}
                     >
                       <span className="absolute -top-5 left-0 text-xs font-mono text-electric-blue bg-navy-dark px-1">
-                        Person 0.92
+                        Person
                       </span>
                     </motion.div>
 
@@ -128,7 +123,7 @@ export function DemoSection() {
                       }}
                     >
                       <span className="absolute -top-5 left-0 text-xs font-mono text-cyan-accent bg-navy-dark px-1">
-                        Person 0.85
+                        Person
                       </span>
                     </motion.div>
                   </div>
@@ -142,30 +137,23 @@ export function DemoSection() {
                 />
               </div>
 
-              {/* Play Button Overlay */}
-              <motion.div
-                className="absolute inset-0 flex items-center justify-center bg-deep-black/60"
-                initial={{ opacity: 1 }}
-                animate={{ opacity: isHovered ? 0.8 : 1 }}
-              >
-                <motion.a
-                  href="https://huggingface.co/spaces"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-4 group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div className="w-20 h-20 rounded-full bg-electric-blue/20 border-2 border-electric-blue flex items-center justify-center group-hover:bg-electric-blue/30 transition-colors">
-                    <Play className="text-electric-blue ml-1" size={32} />
+              {/* Overlay with Instructions */}
+              <div className="absolute inset-0 flex items-center justify-center bg-deep-black/70">
+                <div className="text-center px-6">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-electric-blue/20 border-2 border-electric-blue flex items-center justify-center">
+                    <Github className="text-electric-blue" size={32} />
                   </div>
-                  <span className="text-white font-semibold">Launch Interactive Demo</span>
-                  <span className="text-sm text-slate-text flex items-center gap-2">
-                    Opens on HuggingFace Spaces
-                    <ExternalLink size={14} />
-                  </span>
-                </motion.a>
-              </motion.div>
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    Run the Demo Locally
+                  </h3>
+                  <p className="text-slate-text mb-6 max-w-md">
+                    Clone the repository and run the Gradio app to test the models with your own images.
+                  </p>
+                  <code className="block bg-navy-dark/80 text-cyan-accent px-4 py-3 rounded-lg text-sm font-mono mb-4">
+                    python main.py
+                  </code>
+                </div>
+              </div>
             </div>
 
             {/* Corner Decorations */}
@@ -211,21 +199,21 @@ export function DemoSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="https://huggingface.co/spaces"
+            href="https://github.com/shreyamendi/computer-vision-project"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary flex items-center gap-2"
           >
-            <Play size={18} />
-            Try the Model
+            <Github size={18} />
+            View on GitHub
           </a>
           <a
-            href="https://github.com/shreyamendi/computer-vision-project"
+            href="https://github.com/shreyamendi/computer-vision-project/blob/main/README.md"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary flex items-center gap-2"
           >
-            View Source Code
+            Setup Instructions
             <ExternalLink size={18} />
           </a>
         </motion.div>
@@ -238,8 +226,8 @@ export function DemoSection() {
           className="mt-12 text-center"
         >
           <p className="text-sm text-slate-text max-w-xl mx-auto">
-            The demo runs on CPU by default. For faster inference, deploy on GPU-enabled
-            environments. Model weights are approximately 158MB each.
+            The Gradio demo supports single detection, model comparison, and robustness testing.
+            Models are included in the repository (~158MB each).
           </p>
         </motion.div>
       </div>

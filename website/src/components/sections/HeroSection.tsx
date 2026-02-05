@@ -90,7 +90,7 @@ export function HeroSection() {
         style={{ opacity, scale, y }}
         className="relative z-10 text-center px-6 max-w-5xl mx-auto"
       >
-        {/* Year Badge */}
+        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export function HeroSection() {
         >
           <span className="w-2 h-2 rounded-full bg-electric-blue animate-pulse" />
           <span className="font-mono text-sm text-cyan-accent tracking-wider">
-            2025 SHOWCASE
+            COMPUTER VISION PROJECT
           </span>
         </motion.div>
 
@@ -111,7 +111,7 @@ export function HeroSection() {
           className="hero-title font-bold mb-6 leading-tight"
         >
           <span className="block text-white">UAV Human Detection</span>
-          <span className="block gradient-text">A Year of Innovation</span>
+          <span className="block gradient-text">Thermal Imaging AI</span>
         </motion.h1>
 
         {/* Subtitle with Typewriter Effect */}
@@ -135,20 +135,30 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 1 }}
           className="flex flex-wrap justify-center gap-8 mb-12"
         >
-          {[
-            { value: '78%', label: 'F1 Score' },
-            { value: '85%', label: 'Recall' },
-            { value: '2.8K', label: 'Training Images' },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <span className="block text-3xl font-bold text-electric-blue font-mono">
-                {stat.value}
-              </span>
-              <span className="text-sm text-slate-text font-mono uppercase tracking-wider">
-                {stat.label}
-              </span>
-            </div>
-          ))}
+          <div className="text-center">
+            <span className="block text-3xl font-bold text-electric-blue font-mono">
+              2,866
+            </span>
+            <span className="text-sm text-slate-text font-mono uppercase tracking-wider">
+              Training Images
+            </span>
+          </div>
+          <div className="text-center">
+            <span className="block text-3xl font-bold text-electric-blue font-mono">
+              Faster R-CNN
+            </span>
+            <span className="text-sm text-slate-text font-mono uppercase tracking-wider">
+              Architecture
+            </span>
+          </div>
+          <div className="text-center">
+            <span className="block text-3xl font-bold text-electric-blue font-mono">
+              2 Models
+            </span>
+            <span className="text-sm text-slate-text font-mono uppercase tracking-wider">
+              Baseline + Augmented
+            </span>
+          </div>
         </motion.div>
 
         {/* CTA Button */}
@@ -165,7 +175,7 @@ export function HeroSection() {
             }}
             className="group inline-flex items-center gap-3 btn-primary text-lg"
           >
-            Enter Experience
+            Explore Project
             <motion.span
               animate={{ y: [0, 4, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}

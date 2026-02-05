@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Box, Layers, Zap, Brain, GitBranch, Database } from 'lucide-react'
-import { AnimatedText, CountUp } from '../AnimatedText'
+import { AnimatedText } from '../AnimatedText'
 
 const architectureSteps = [
   {
@@ -36,27 +36,23 @@ const modelComparison = [
   {
     name: 'Model A',
     subtitle: 'Baseline',
-    description: 'Trained on clean thermal images only',
-    stats: {
-      precision: 72.3,
-      recall: 84.9,
-      f1: 78.1,
-      cleanF1Drop: 0,
-      perturbedF1Drop: 20.0,
-    },
+    description: 'Trained on clean thermal images only. Establishes baseline performance for comparison.',
+    features: [
+      'Standard training pipeline',
+      'Clean image inputs only',
+      'Baseline for comparison',
+    ],
     color: 'electric-blue',
   },
   {
     name: 'Model B',
     subtitle: 'Augmented',
-    description: 'Trained with SAR environmental augmentations',
-    stats: {
-      precision: 69.0,
-      recall: 84.7,
-      f1: 76.1,
-      cleanF1Drop: 0,
-      perturbedF1Drop: 7.6,
-    },
+    description: 'Trained with SAR environmental augmentations for improved robustness in real-world conditions.',
+    features: [
+      'Snow effect augmentation',
+      'Smoke/fog augmentation',
+      'Enhanced robustness',
+    ],
     color: 'cyan-accent',
     recommended: true,
   },
@@ -90,7 +86,7 @@ export function TechnologySection() {
             <AnimatedText text="Intelligence in the Sky" />
           </h2>
           <p className="text-xl md:text-2xl text-cyan-accent font-light max-w-2xl">
-            Faster R-CNN and computer vision working in real-time
+            Faster R-CNN with ResNet-50 backbone for thermal human detection
           </p>
         </motion.div>
 
@@ -195,57 +191,17 @@ export function TechnologySection() {
 
                 <p className="text-slate-text mb-6">{model.description}</p>
 
-                {/* Stats Grid */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <div className="text-center p-3 rounded bg-navy-dark/50">
-                    <span className="block text-2xl font-mono font-bold text-electric-blue">
-                      <CountUp end={model.stats.precision} suffix="%" decimals={1} />
-                    </span>
-                    <span className="text-xs text-slate-text uppercase">Precision</span>
-                  </div>
-                  <div className="text-center p-3 rounded bg-navy-dark/50">
-                    <span className="block text-2xl font-mono font-bold text-cyan-accent">
-                      <CountUp end={model.stats.recall} suffix="%" decimals={1} />
-                    </span>
-                    <span className="text-xs text-slate-text uppercase">Recall</span>
-                  </div>
-                  <div className="text-center p-3 rounded bg-navy-dark/50">
-                    <span className="block text-2xl font-mono font-bold text-white">
-                      <CountUp end={model.stats.f1} suffix="%" decimals={1} />
-                    </span>
-                    <span className="text-xs text-slate-text uppercase">F1 Score</span>
-                  </div>
-                </div>
-
-                {/* Robustness Indicator */}
-                <div className="border-t border-electric-blue/20 pt-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-text">
-                      F1 Drop (Adverse Conditions)
-                    </span>
-                    <span
-                      className={`font-mono font-bold ${
-                        model.stats.perturbedF1Drop > 15
-                          ? 'text-red-400'
-                          : 'text-green-400'
-                      }`}
-                    >
-                      -{model.stats.perturbedF1Drop}%
-                    </span>
-                  </div>
-                  <div className="mt-2 h-2 bg-navy-dark rounded-full overflow-hidden">
-                    <motion.div
-                      className={`h-full ${
-                        model.stats.perturbedF1Drop > 15
-                          ? 'bg-red-400/50'
-                          : 'bg-green-400/50'
-                      }`}
-                      initial={{ width: 0 }}
-                      animate={isInView ? { width: `${100 - model.stats.perturbedF1Drop * 2}%` } : {}}
-                      transition={{ duration: 1, delay: 1 }}
-                    />
-                  </div>
-                </div>
+                {/* Features List */}
+                <ul className="space-y-2">
+                  {model.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-sm text-slate-text">
+                      <span className={`w-1.5 h-1.5 rounded-full ${
+                        model.color === 'electric-blue' ? 'bg-electric-blue' : 'bg-cyan-accent'
+                      }`} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -262,12 +218,12 @@ export function TechnologySection() {
             <p className="text-lg text-slate-text mb-4">Key Finding</p>
             <p className="text-2xl md:text-3xl font-bold text-white mb-4">
               Model B shows{' '}
-              <span className="gradient-text">3× smaller F1 drop</span> under adverse
+              <span className="gradient-text">improved robustness</span> under adverse
               conditions
             </p>
             <p className="text-slate-text">
-              SAR augmentation training significantly improves robustness to environmental
-              challenges like snow and smoke.
+              SAR augmentation training improves model performance in challenging environmental
+              conditions like snow and smoke.
             </p>
           </div>
         </motion.div>

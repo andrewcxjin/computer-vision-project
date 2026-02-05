@@ -86,7 +86,7 @@ export function Footer() {
                 <span className="block font-semibold text-white">
                   UAV Human Detection
                 </span>
-                <span className="text-xs text-slate-text">2025 Showcase</span>
+                <span className="text-xs text-slate-text">Computer Vision Project</span>
               </div>
             </div>
             <p className="text-sm text-slate-text mb-6">

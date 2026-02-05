@@ -220,7 +220,7 @@ export function MissionSection() {
           {[
             { value: 2866, suffix: '', label: 'Thermal Images' },
             { value: 512, suffix: 'px', label: 'Input Resolution' },
-            { value: 0.5, suffix: 's', label: 'Detection Speed', decimals: 1 },
+            { value: 5, suffix: '', label: 'Object Classes' },
             { value: 2, suffix: '', label: 'Model Variants' },
           ].map((stat, index) => (
             <div
@@ -231,7 +231,7 @@ export function MissionSection() {
                 <CountUp
                   end={stat.value}
                   suffix={stat.suffix}
-                  decimals={stat.decimals || 0}
+                  decimals={0}
                   duration={2}
                 />
               </span>

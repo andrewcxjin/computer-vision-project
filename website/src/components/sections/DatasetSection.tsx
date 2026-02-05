@@ -18,7 +18,7 @@ const datasetFeatures = [
   },
   {
     icon: Tag,
-    title: 'YOLO Format',
+    title: 'COCO Format',
     description: 'Standardized bounding box annotations for seamless training',
   },
   {
@@ -286,7 +286,7 @@ export function DatasetSection() {
           </motion.div>
         </div>
 
-        {/* Final Metrics Summary */}
+        {/* Dataset Summary */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -294,17 +294,17 @@ export function DatasetSection() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { label: 'mAP@0.50', value: 77.99, suffix: '%' },
-            { label: 'mAP@0.50:0.95', value: 42.97, suffix: '%' },
-            { label: 'Best F1', value: 78.08, suffix: '%' },
-            { label: 'Mean IoU', value: 68.5, suffix: '%' },
+            { label: 'Total Images', value: 2866, suffix: '' },
+            { label: 'Input Size', value: 512, suffix: 'px' },
+            { label: 'Object Classes', value: 5, suffix: '' },
+            { label: 'Model Variants', value: 2, suffix: '' },
           ].map((metric) => (
             <div
               key={metric.label}
               className="text-center p-6 rounded-lg border border-electric-blue/20 bg-navy-dark/30"
             >
               <span className="block text-3xl md:text-4xl font-bold text-electric-blue font-mono mb-2">
-                <CountUp end={metric.value} suffix={metric.suffix} decimals={1} duration={2} />
+                <CountUp end={metric.value} suffix={metric.suffix} decimals={0} duration={2} />
               </span>
               <span className="text-sm text-slate-text font-mono uppercase tracking-wider">
                 {metric.label}
