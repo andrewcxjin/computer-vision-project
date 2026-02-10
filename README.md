@@ -184,3 +184,9 @@ MIT License - For research and educational purposes.
 - [HIT-UAV Dataset](https://github.com/suojiashun/HIT-UAV-Infrared-Thermal-Dataset)
 - PyTorch/TorchVision detection models
 - Gradio for the web interface
+- Claude Code (citation listed at bottom of relevant files)
+
+// -----------------------------------------------------------------------------
+// Citation: This file was built with the assistance of Claude (Anthropic).
+// Claude Chat: https://claude.ai/share/b7904428-8d66-45d2-a41d-da9b019da71a
+// -----------------------------------------------------------------------------
