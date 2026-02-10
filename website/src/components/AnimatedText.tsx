@@ -124,8 +124,19 @@ export function CountUp({
 }: CountUpProps) {
   const [count, setCount] = useState(0)
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true, margin: '50px' })
   const [hasStarted, setHasStarted] = useState(false)
+
+  // Fallback: if IntersectionObserver never fires, show final values after 3s
+  useEffect(() => {
+    const fallback = setTimeout(() => {
+      if (!hasStarted) {
+        setHasStarted(true)
+        setCount(end)
+      }
+    }, 3000)
+    return () => clearTimeout(fallback)
+  }, [end, hasStarted])
 
   useEffect(() => {
     if (isInView && !hasStarted) {
