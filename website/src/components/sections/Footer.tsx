@@ -177,3 +177,8 @@ export function Footer() {
     </footer>
   )
 }
+
+// -----------------------------------------------------------------------------
+// Citation: This file was built with the assistance of Claude (Anthropic).
+// Claude Chat: https://claude.ai/share/b7904428-8d66-45d2-a41d-da9b019da71a
+// -----------------------------------------------------------------------------
