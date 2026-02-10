@@ -16,13 +16,13 @@ const architectureSteps = [
     icon: Layers,
     title: 'Backbone',
     description: 'ResNet-50 + FPN',
-    detail: 'Feature Pyramid Network',
+    detail: 'Layers 1–3 frozen, Layer 4+ trained',
   },
   {
     icon: Brain,
     title: 'Detection Head',
     description: 'Faster R-CNN',
-    detail: 'Region Proposal Network',
+    detail: '79.4% params trainable',
   },
   {
     icon: Box,
@@ -36,22 +36,22 @@ const modelComparison = [
   {
     name: 'Model A',
     subtitle: 'Baseline',
-    description: 'Trained on clean thermal images only. Establishes baseline performance for comparison.',
+    description: 'Trained on clean thermal images only. F1 = 0.78 on clean data, but degrades 20% on perturbed data.',
     features: [
-      'Standard training pipeline',
-      'Clean image inputs only',
-      'Baseline for comparison',
+      'Clean image training only',
+      'F1: 0.78 clean, 0.62 perturbed',
+      'mAP drops 27.9% under adverse conditions',
     ],
     color: 'electric-blue',
   },
   {
     name: 'Model B',
-    subtitle: 'Augmented',
-    description: 'Trained with SAR environmental augmentations for improved robustness in real-world conditions.',
+    subtitle: 'SAR Augmented',
+    description: 'Trained with 50% SAR augmentation (snow + smoke). Only 2% F1 cost on clean data for 19.4% robustness gain.',
     features: [
-      'Snow effect augmentation',
-      'Smoke/fog augmentation',
-      'Enhanced robustness',
+      'Snow + smoke augmentation at 50% rate',
+      'F1: 0.76 clean, 0.70 perturbed',
+      'mAP drops only 8.6% under adverse conditions',
     ],
     color: 'cyan-accent',
     recommended: true,
@@ -217,13 +217,13 @@ export function TechnologySection() {
           <div className="inline-block p-8 rounded-lg border border-cyan-accent/30 bg-navy-dark/30">
             <p className="text-lg text-slate-text mb-4">Key Finding</p>
             <p className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Model B shows{' '}
-              <span className="gradient-text">improved robustness</span> under adverse
+              Model B is{' '}
+              <span className="gradient-text">19.4% more robust</span> under adverse
               conditions
             </p>
             <p className="text-slate-text">
-              SAR augmentation training improves model performance in challenging environmental
-              conditions like snow and smoke.
+              SAR augmentation trades only ~2% clean-data F1 for a 19.4% mAP robustness
+              improvement on perturbed data with snow and smoke effects.
             </p>
           </div>
         </motion.div>

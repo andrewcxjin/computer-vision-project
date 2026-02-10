@@ -99,7 +99,7 @@ export function Navigation() {
             className="hidden md:flex items-center gap-6"
           >
             <a
-              href="https://github.com/shreyamendi/computer-vision-project"
+              href="https://github.com/andrewcxjin/computer-vision-project"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-slate-text hover:text-cyan-accent transition-colors"
@@ -163,7 +163,7 @@ export function Navigation() {
                 className="flex gap-4 mt-8"
               >
                 <a
-                  href="https://github.com/shreyamendi/computer-vision-project"
+                  href="https://github.com/andrewcxjin/computer-vision-project"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary text-sm py-2 px-4 flex items-center gap-2"

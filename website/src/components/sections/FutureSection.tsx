@@ -16,74 +16,74 @@ import { AnimatedText } from '../AnimatedText'
 const futureCapabilities = [
   {
     icon: Crosshair,
-    title: 'Multi-Object Tracking',
+    title: 'Multi-Class Detection',
     description:
-      'Extend detection to continuous tracking across video frames, maintaining identity persistence through occlusions.',
-    status: 'In Development',
-    progress: 60,
-  },
-  {
-    icon: Thermometer,
-    title: 'Enhanced Thermal Analysis',
-    description:
-      'Integrate temperature-based anomaly detection for medical emergencies and fire hazard identification.',
-    status: 'Research',
-    progress: 30,
-  },
-  {
-    icon: Cpu,
-    title: 'Edge Deployment',
-    description:
-      'Optimize models for NVIDIA Jetson and similar edge devices for real-time onboard UAV processing.',
-    status: 'Planned',
-    progress: 15,
+      'Expand beyond person detection to also detect cars, bicycles, and other vehicles. These objects can indicate a missing person\'s location in SAR operations.',
+    status: 'Next Priority',
+    progress: 0,
   },
   {
     icon: Layers,
-    title: 'Multi-Spectral Fusion',
+    title: 'Ensemble Models',
     description:
-      'Combine thermal, RGB, and depth data for enhanced detection accuracy in challenging conditions.',
-    status: 'Research',
-    progress: 25,
+      'Combine multiple model types and average results to reduce overfitting and bias, creating a more robust detection system overall.',
+    status: 'Proposed',
+    progress: 0,
   },
   {
     icon: Radio,
-    title: 'Swarm Coordination',
+    title: 'Video Tracking',
     description:
-      'Enable multiple UAVs to share detection data and coordinate search patterns autonomously.',
-    status: 'Concept',
-    progress: 5,
+      'Extend from single-frame detection to continuous tracking across video sequences, leveraging the 43,470 frames available in the HIT-UAV source data.',
+    status: 'Proposed',
+    progress: 0,
+  },
+  {
+    icon: Cpu,
+    title: 'Longer Training',
+    description:
+      'Both models were still improving at epoch 6. Extending to 15–20 epochs with early stopping and learning rate warmup would likely improve F1 by 5–10%.',
+    status: 'Recommended',
+    progress: 0,
+  },
+  {
+    icon: Thermometer,
+    title: 'Improved Localization',
+    description:
+      'AP@0.75 is below 0.43 for both models. Switching to GIoU/CIoU loss and tuning anchor box sizes for UAV data would improve bounding box precision.',
+    status: 'Recommended',
+    progress: 0,
   },
   {
     icon: Workflow,
-    title: 'Action Recognition',
+    title: 'Additional Augmentations',
     description:
-      'Move beyond detection to understand human activities and behaviors from aerial perspectives.',
-    status: 'Planned',
-    progress: 10,
+      'Add more perturbation types beyond snow and smoke (e.g., rain, dust, varying altitudes) to further improve robustness across diverse SAR scenarios.',
+    status: 'Proposed',
+    progress: 0,
   },
 ]
 
 const roadmapPhases = [
   {
-    phase: 'Q1 2025',
-    title: 'Model Optimization',
-    items: ['Quantization for edge devices', 'TensorRT integration', 'Model distillation'],
+    phase: 'SHORT TERM',
+    title: 'Training Improvements',
+    items: ['Extend to 15–20 epochs with early stopping', 'Increase batch size to 8–16', 'Add LR warmup schedule'],
   },
   {
-    phase: 'Q2 2025',
-    title: 'Feature Expansion',
-    items: ['Multi-object tracking', 'Video pipeline', 'Real-time streaming'],
+    phase: 'MEDIUM TERM',
+    title: 'Model Enhancements',
+    items: ['Multi-class detection (person + vehicles)', 'GIoU/CIoU loss for localization', 'Ensemble model averaging'],
   },
   {
-    phase: 'Q3 2025',
-    title: 'Platform Integration',
-    items: ['DJI SDK integration', 'PX4 autopilot support', 'Ground station software'],
+    phase: 'LONGER TERM',
+    title: 'Data & Robustness',
+    items: ['Additional perturbation types (rain, dust)', 'Video frame tracking pipeline', 'Larger thermal datasets'],
   },
   {
-    phase: 'Q4 2025',
-    title: 'Advanced Capabilities',
-    items: ['Multi-spectral fusion', 'Swarm coordination', 'Action recognition'],
+    phase: 'DEPLOYMENT',
+    title: 'Real-World Readiness',
+    items: ['Confidence threshold tuning per scenario', 'Human-in-the-loop validation', 'Ethics & privacy safeguards'],
   },
 ]
 
@@ -144,11 +144,11 @@ export function FutureSection() {
                     <h4 className="font-semibold text-white mb-1">{capability.title}</h4>
                     <span
                       className={`text-xs font-mono uppercase tracking-wider px-2 py-0.5 rounded ${
-                        capability.status === 'In Development'
+                        capability.status === 'Recommended'
                           ? 'bg-green-500/20 text-green-400'
-                          : capability.status === 'Research'
+                          : capability.status === 'Next Priority'
                           ? 'bg-cyan-accent/20 text-cyan-accent'
-                          : capability.status === 'Planned'
+                          : capability.status === 'Proposed'
                           ? 'bg-yellow-500/20 text-yellow-400'
                           : 'bg-slate-500/20 text-slate-400'
                       }`}
@@ -244,26 +244,27 @@ export function FutureSection() {
           className="mt-20 text-center"
         >
           <div className="inline-block p-8 rounded-lg border border-cyan-accent/30 bg-navy-dark/30 max-w-2xl">
-            <h3 className="text-2xl font-bold text-white mb-4">Join the Mission</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Explore the Project</h3>
             <p className="text-slate-text mb-6">
-              This is an open-source project. We welcome contributions from researchers,
-              developers, and organizations working on aerial surveillance and search &
-              rescue technologies.
+              View our code, training notebook, and results on GitHub. Built by
+              Lindsay Gross, Andrew Jin, and Shreya Mendi.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://github.com/shreyamendi/computer-vision-project"
+                href="https://github.com/andrewcxjin/computer-vision-project"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
               >
-                Contribute on GitHub
+                View on GitHub
               </a>
               <a
-                href="mailto:contact@example.com"
+                href="https://colab.research.google.com/drive/1I2hQirBjJ8YmBIv_DVcIKWLvvLCAeSRT?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-secondary"
               >
-                Partner With Us
+                Open Colab Notebook
               </a>
             </div>
           </div>

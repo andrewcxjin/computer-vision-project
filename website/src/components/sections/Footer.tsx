@@ -9,17 +9,18 @@ const technologies = [
   { name: 'HuggingFace', url: 'https://huggingface.co/' },
   { name: 'Gradio', url: 'https://gradio.app/' },
   { name: 'OpenCV', url: 'https://opencv.org/' },
-  { name: 'HIT-UAV Dataset', url: 'https://www.kaggle.com/datasets/pandrii000/hituav-a-highaltitude-infrared-thermal-dataset' },
+  { name: 'Albumentations', url: 'https://albumentations.ai/' },
+  { name: 'HIT-UAV Dataset', url: 'https://github.com/suojiashun/HIT-UAV-Infrared-Thermal-Dataset' },
 ]
 
 const links = [
   {
     title: 'Resources',
     items: [
-      { name: 'GitHub Repository', url: 'https://github.com/shreyamendi/computer-vision-project' },
+      { name: 'GitHub Repository', url: 'https://github.com/andrewcxjin/computer-vision-project' },
       { name: 'HuggingFace Demo', url: 'https://huggingface.co/spaces' },
-      { name: 'Documentation', url: 'https://github.com/shreyamendi/computer-vision-project#readme' },
-      { name: 'Training Notebook', url: 'https://github.com/shreyamendi/computer-vision-project/blob/main/notebooks/uav_human_detection.ipynb' },
+      { name: 'Documentation', url: 'https://github.com/andrewcxjin/computer-vision-project#readme' },
+      { name: 'Training Notebook', url: 'https://colab.research.google.com/drive/1I2hQirBjJ8YmBIv_DVcIKWLvvLCAeSRT?usp=sharing' },
     ],
   },
   {
@@ -90,12 +91,12 @@ export function Footer() {
               </div>
             </div>
             <p className="text-sm text-slate-text mb-6">
-              AI-powered human detection from aerial perspectives. Built for search &
-              rescue, disaster response, and security applications.
+              Robust human detection in UAV thermal imagery. Evaluating data augmentation
+              for SAR conditions. By Lindsay Gross, Andrew Jin, and Shreya Mendi.
             </p>
             <div className="flex gap-4">
               <a
-                href="https://github.com/shreyamendi/computer-vision-project"
+                href="https://github.com/andrewcxjin/computer-vision-project"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg border border-electric-blue/30 bg-navy-dark/30 flex items-center justify-center text-slate-text hover:text-electric-blue hover:border-electric-blue transition-colors"
@@ -153,7 +154,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-2 text-sm text-slate-text">
             <Box size={16} className="text-electric-blue" />
-            <span>158MB Model Size</span>
+            <span>HIT-UAV Thermal Dataset</span>
           </div>
         </motion.div>
 
@@ -165,8 +166,8 @@ export function Footer() {
           className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-text"
         >
           <p>
-            &copy; {new Date().getFullYear()} UAV Human Detection Project. Open source
-            under MIT License.
+            &copy; {new Date().getFullYear()} UAV Human Detection Project. Computer Vision
+            Course Project.
           </p>
           <p className="flex items-center gap-1">
             Built with <Heart size={14} className="text-red-400" /> using Next.js &

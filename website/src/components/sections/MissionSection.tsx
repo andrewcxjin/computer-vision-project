@@ -10,25 +10,25 @@ const applications = [
     icon: Search,
     title: 'Search & Rescue',
     description:
-      'Locate missing persons in remote terrain, disaster zones, and challenging environments where traditional search methods fail.',
+      'Locate missing persons in remote or blocked-off terrain where manual image review is slow and error-prone.',
   },
   {
     icon: ShieldAlert,
     title: 'Disaster Response',
     description:
-      'Rapidly assess affected areas after natural disasters to identify survivors and prioritize rescue operations.',
+      'Operate in wildfire smoke and heavy snowfall conditions that degrade standard detection models.',
   },
   {
     icon: Users,
-    title: 'Security & Surveillance',
+    title: 'Reduced False Negatives',
     description:
-      'Monitor large-scale events, borders, and critical infrastructure with automated threat detection capabilities.',
+      'Minimize missed detections in SAR operations where a false negative can mean a life lost.',
   },
   {
     icon: Mountain,
-    title: 'Remote Monitoring',
+    title: 'All-Weather Operation',
     description:
-      'Survey inaccessible areas for human activity in conservation zones, mining operations, and construction sites.',
+      'Extend operation windows beyond ideal weather conditions using augmentation-trained models.',
   },
 ]
 
@@ -70,7 +70,7 @@ export function MissionSection() {
             <AnimatedText text="Seeing from Above" />
           </h2>
           <p className="text-xl md:text-2xl text-cyan-accent font-light max-w-2xl">
-            AI-powered human detection transforming aerial surveillance
+            Can data augmentation improve robustness of UAV detection in adverse conditions?
           </p>
         </motion.div>
 
@@ -84,15 +84,15 @@ export function MissionSection() {
           >
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-slate-text leading-relaxed mb-6">
-                Unmanned Aerial Vehicles (UAVs) equipped with computer vision represent
-                a paradigm shift in how we approach human detection challenges. By
-                combining thermal imaging with deep learning, we can see what the human
-                eye cannot.
+                Search and Rescue (SAR) operations rely on UAVs equipped with thermal
+                imaging to locate missing persons in remote areas. However, current
+                detection models are trained on clean aerial images and fail when faced
+                with adverse conditions like heavy snowfall or wildfire smoke.
               </p>
               <p className="text-lg text-slate-text leading-relaxed mb-8">
-                Our Faster R-CNN models, trained on the HIT-UAV thermal dataset, achieve
-                reliable detection across diverse conditions—from clear weather to
-                snow-covered terrain and smoke-filled disaster zones.
+                We investigate whether data augmentation strategies can simulate
+                realistic SAR environmental conditions to improve model robustness
+                without significantly sacrificing baseline performance on clean images.
               </p>
             </div>
 
@@ -218,7 +218,7 @@ export function MissionSection() {
           className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { value: 2866, suffix: '', label: 'Thermal Images' },
+            { value: 2898, suffix: '', label: 'Thermal Images' },
             { value: 512, suffix: 'px', label: 'Input Resolution' },
             { value: 5, suffix: '', label: 'Object Classes' },
             { value: 2, suffix: '', label: 'Model Variants' },

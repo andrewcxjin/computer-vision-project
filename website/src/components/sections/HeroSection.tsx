@@ -122,7 +122,7 @@ export function HeroSection() {
           className="text-xl md:text-2xl text-slate-text mb-12 font-light"
         >
           <TypewriterText
-            text="Advancing aerial surveillance through AI-powered vision"
+            text="Improving search and rescue with robust thermal detection"
             speed={40}
             delay={800}
           />
@@ -137,10 +137,10 @@ export function HeroSection() {
         >
           <div className="text-center">
             <span className="block text-3xl font-bold text-electric-blue font-mono">
-              2,866
+              2,898
             </span>
             <span className="text-sm text-slate-text font-mono uppercase tracking-wider">
-              Training Images
+              Thermal Images
             </span>
           </div>
           <div className="text-center">
@@ -156,7 +156,7 @@ export function HeroSection() {
               2 Models
             </span>
             <span className="text-sm text-slate-text font-mono uppercase tracking-wider">
-              Baseline + Augmented
+              Baseline vs Augmented
             </span>
           </div>
         </motion.div>

@@ -9,22 +9,22 @@ const datasetFeatures = [
   {
     icon: Thermometer,
     title: 'Thermal Imaging',
-    description: 'Infrared captures heat signatures invisible to standard cameras',
+    description: 'Infrared captures heat signatures day and night at 60–130m altitude',
   },
   {
     icon: Image,
-    title: '2,866 Images',
-    description: 'Diverse aerial perspectives from high-altitude UAV platforms',
+    title: '2,898 Images',
+    description: 'Sampled from 43,470 UAV video frames with camera angles 30–90°',
   },
   {
     icon: Tag,
-    title: 'COCO Format',
-    description: 'Standardized bounding box annotations for seamless training',
+    title: 'YOLO Format Labels',
+    description: 'Bounding box annotations for Person, Car, Bicycle, OtherVehicle',
   },
   {
     icon: Database,
     title: 'HIT-UAV Dataset',
-    description: 'High-altitude infrared thermal dataset from Kaggle',
+    description: 'Published in Scientific Data by Suo et al., CC0 licensed',
   },
 ]
 
@@ -32,14 +32,14 @@ const augmentations = [
   {
     name: 'Snow Effect',
     icon: Snowflake,
-    description: 'Multi-scale Perlin noise for ground coverage, sparse falling snowflakes, atmospheric blur',
-    intensity: '40-70%',
+    description: 'Albumentations-based snow perturbation with Gaussian noise for realistic SAR winter conditions',
+    intensity: '50%',
   },
   {
     name: 'Smoke/Fog Effect',
     icon: CloudFog,
-    description: 'Dense white-gray fog overlay, Gaussian noise variation, heavy atmospheric blur',
-    intensity: '50-75%',
+    description: 'Albumentations-based fog overlay with Gaussian noise to simulate wildfire and disaster scenarios',
+    intensity: '50%',
   },
 ]
 
@@ -123,8 +123,8 @@ export function DatasetSection() {
               SAR Augmentations
             </h3>
             <p className="text-slate-text mb-6">
-              Search and Rescue specific augmentations simulate real-world environmental
-              challenges, improving model robustness in adverse conditions.
+              Using the Albumentations library, we perturb images with snow and smoke effects
+              to simulate realistic SAR conditions. Applied to 50% of training images for Model B.
             </p>
 
             <div className="space-y-4">
@@ -294,10 +294,10 @@ export function DatasetSection() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { label: 'Total Images', value: 2866, suffix: '' },
+            { label: 'Total Images', value: 2898, suffix: '' },
             { label: 'Input Size', value: 512, suffix: 'px' },
-            { label: 'Object Classes', value: 5, suffix: '' },
-            { label: 'Model Variants', value: 2, suffix: '' },
+            { label: 'Train Split', value: 2006, suffix: '' },
+            { label: 'Test Split', value: 430, suffix: '' },
           ].map((metric) => (
             <div
               key={metric.label}

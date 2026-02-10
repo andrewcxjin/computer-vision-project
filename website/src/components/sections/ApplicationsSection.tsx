@@ -7,8 +7,6 @@ import {
   Search,
   Shield,
   Building2,
-  Trees,
-  HardHat,
   Flame,
   Users,
   ChevronRight,
@@ -20,13 +18,13 @@ const useCases = [
     id: 'sar',
     icon: Search,
     title: 'Search & Rescue',
-    location: 'Mountain Terrain',
+    location: 'Remote Terrain',
     description:
-      'Thermal imaging cuts through darkness, fog, and dense vegetation to locate missing hikers, lost children, and disaster victims in remote wilderness areas.',
+      'Our primary target application. SAR teams need reliable detection in snow, smoke, and low-visibility conditions where current models fail. Our augmented model retains 80% recall under adverse conditions.',
     stats: [
-      { label: 'Search Area', value: '10x faster' },
-      { label: 'Night Ops', value: 'Full capability' },
-      { label: 'Terrain', value: 'All types' },
+      { label: 'Recall (Clean)', value: '84.9%' },
+      { label: 'Recall (Perturbed)', value: '80.2%' },
+      { label: 'Robustness Gain', value: '+19.4%' },
     ],
     coordinates: { lat: 46.8523, lng: -121.7603 },
   },
@@ -34,71 +32,43 @@ const useCases = [
     id: 'disaster',
     icon: Flame,
     title: 'Disaster Response',
-    location: 'Urban & Rural',
+    location: 'Wildfire & Flood Zones',
     description:
-      'Rapidly assess earthquake damage, flood zones, and wildfire boundaries. Identify survivors trapped in collapsed structures through thermal signatures.',
+      'Thermal imaging detects human heat signatures through smoke and at night. Our SAR augmentation specifically simulates smoke conditions to improve detection during wildfire scenarios.',
     stats: [
-      { label: 'Response Time', value: '-60%' },
-      { label: 'Coverage', value: '500+ acres/hr' },
-      { label: 'Accuracy', value: '85%+ recall' },
+      { label: 'F1 (Augmented)', value: '0.70' },
+      { label: 'Altitude', value: '60–130m' },
+      { label: 'Day/Night', value: 'Both' },
     ],
     coordinates: { lat: 34.0522, lng: -118.2437 },
   },
   {
-    id: 'security',
-    icon: Shield,
-    title: 'Event Security',
-    location: 'Large Venues',
-    description:
-      'Monitor crowd density, detect unauthorized access, and track suspicious behavior patterns at concerts, sporting events, and public gatherings.',
-    stats: [
-      { label: 'Crowd Size', value: '100K+' },
-      { label: 'Real-time', value: '<1s latency' },
-      { label: 'Coverage', value: '360° view' },
-    ],
-    coordinates: { lat: 51.5074, lng: -0.1278 },
-  },
-  {
-    id: 'infrastructure',
+    id: 'market',
     icon: Building2,
-    title: 'Infrastructure',
-    location: 'Critical Facilities',
+    title: 'Market Opportunity',
+    location: 'Global UAV Market',
     description:
-      'Protect power plants, data centers, and government buildings with continuous perimeter monitoring and automated intruder detection.',
+      'The global UAV market is valued at USD 47.55 billion and is expected to grow to USD 160.44 billion by 2034. Reliable computer vision models are critical to meeting this demand.',
     stats: [
-      { label: 'Perimeter', value: '24/7' },
-      { label: 'False Alarms', value: '-80%' },
-      { label: 'Detection', value: '<5s' },
+      { label: 'Market 2024', value: '$47.6B' },
+      { label: 'Market 2034', value: '$160.4B' },
+      { label: 'Growth', value: '3.4x' },
     ],
     coordinates: { lat: 38.8977, lng: -77.0365 },
   },
   {
-    id: 'conservation',
-    icon: Trees,
-    title: 'Wildlife Conservation',
-    location: 'Protected Areas',
+    id: 'pain-points',
+    icon: Shield,
+    title: 'Pain Points Addressed',
+    location: 'Operational Challenges',
     description:
-      'Track poacher activity, monitor ranger patrols, and ensure human safety in wildlife reserves without disturbing animal populations.',
+      'Our model addresses false negatives leading to missed persons, human error in manual image review, limited operation windows requiring ideal weather, and limited reach to remote areas.',
     stats: [
-      { label: 'Poaching', value: '-75%' },
-      { label: 'Area', value: '1000+ km²' },
-      { label: 'Integration', value: 'Real-time' },
+      { label: 'FN Reduction', value: 'Model B' },
+      { label: 'Weather', value: 'Snow+Smoke' },
+      { label: 'Automation', value: 'Thermal AI' },
     ],
-    coordinates: { lat: -2.3333, lng: 34.8333 },
-  },
-  {
-    id: 'construction',
-    icon: HardHat,
-    title: 'Construction Safety',
-    location: 'Work Sites',
-    description:
-      'Monitor worker locations in hazardous zones, ensure PPE compliance from aerial view, and coordinate evacuation during emergencies.',
-    stats: [
-      { label: 'Incidents', value: '-40%' },
-      { label: 'Compliance', value: '95%+' },
-      { label: 'Site Coverage', value: 'Full' },
-    ],
-    coordinates: { lat: 25.2048, lng: 55.2708 },
+    coordinates: { lat: 51.5074, lng: -0.1278 },
   },
 ]
 
@@ -131,7 +101,7 @@ export function ApplicationsSection() {
             <AnimatedText text="Impact Across Industries" />
           </h2>
           <p className="text-xl md:text-2xl text-cyan-accent font-light max-w-2xl">
-            From rescue missions to smart cities
+            From rescue missions to commercial deployment
           </p>
         </motion.div>
 
@@ -303,9 +273,10 @@ export function ApplicationsSection() {
           <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-electric-blue/30 bg-navy-dark/30">
             <Users className="text-electric-blue" size={20} />
             <span className="text-slate-text">
-              Potential deployment across{' '}
-              <span className="text-cyan-accent font-semibold">6 industries</span> and{' '}
-              <span className="text-cyan-accent font-semibold">50+ use cases</span>
+              Targeting{' '}
+              <span className="text-cyan-accent font-semibold">SAR teams</span>,{' '}
+              <span className="text-cyan-accent font-semibold">disaster response</span>, and{' '}
+              <span className="text-cyan-accent font-semibold">first responders</span>
             </span>
           </div>
         </motion.div>
